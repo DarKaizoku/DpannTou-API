@@ -6,6 +6,7 @@ import { ServicesModule } from './services/services.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { ReservationsModule } from './reservations/reservations.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AuthModule } from './auth/auth.module';
       autoLoadEntities: true,
     }),
     AuthModule,
+    ReservationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
