@@ -1,11 +1,11 @@
-import { IsInt } from 'class-validator';
 import {
   IsBoolean,
+  IsInt,
   IsDate,
   IsNotEmpty,
   IsOptional,
   IsString,
-} from 'class-validator/types/decorator/decorators';
+} from 'class-validator';
 
 export class CreateServiceDto {
   @IsInt()
@@ -17,6 +17,9 @@ export class CreateServiceDto {
   @IsInt()
   @IsNotEmpty()
   price: number;
+  @IsString()
+  @IsNotEmpty()
+  city: string;
   @IsDate()
   @IsOptional()
   start_time: Date;

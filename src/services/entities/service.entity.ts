@@ -9,9 +9,11 @@ export class Service extends BaseEntity {
   name: string;
   @Column('numeric')
   price: number;
-  @Column('timestamp with local time zone')
+  @Column('varchar')
+  city: string;
+  @Column({ type: 'timestamp with time zone', default: null })
   start_time: Date;
-  @Column('timestamp with local time zone')
+  @Column({ type: 'timestamp with time zone', default: null })
   end_time: Date;
   @Column({ type: 'boolean', default: false })
   reserved: boolean;
