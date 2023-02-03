@@ -12,7 +12,9 @@ export class ServicesService {
     newService.name = createServiceDto.name;
     newService.price = createServiceDto.price;
     newService.city = createServiceDto.city;
-    Service.save(newService);
+    newService.start_time = createServiceDto.start_time;
+    newService.end_time = createServiceDto.end_time;
+    await Service.save(newService);
 
     const serviceCreated = await Service.findOneBy({
       name: createServiceDto.name,
@@ -26,6 +28,10 @@ export class ServicesService {
 
   findOne(id: number) {
     return Service.findBy({ id });
+  }
+
+  findOnebyName(name: string) {
+    return Service.findOneBy({ name: name });
   }
 
   async update(id: number, updateServiceDto: UpdateServiceDto) {

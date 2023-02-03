@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { ServicesService } from './services.service';
 import { CreateServiceDto } from './dto/create-service.dto';
@@ -21,22 +22,30 @@ export class ServicesController {
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.servicesService.findAll();
   }
 
+  @Get('name')
+  async findOnebyName(@Body('name') name: string) {
+    return this.servicesService.findOnebyName(name);
+  }
+
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id', new ParseIntPipe()) id: number) {
     return this.servicesService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateServiceDto: UpdateServiceDto) {
+  async update(
+    @Param('id', new ParseIntPipe()) id: number,
+    @Body() updateServiceDto: UpdateServiceDto,
+  ) {
     return this.servicesService.update(+id, updateServiceDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id', new ParseIntPipe()) id: number) {
     return this.servicesService.remove(+id);
   }
 }

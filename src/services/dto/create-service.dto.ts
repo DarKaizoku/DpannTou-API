@@ -5,6 +5,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  IsDateString,
 } from 'class-validator';
 
 export class CreateServiceDto {
@@ -20,11 +21,11 @@ export class CreateServiceDto {
   @IsString()
   @IsNotEmpty()
   city: string;
-  @IsDate()
-  @IsOptional()
+  @IsDateString()
+  @IsNotEmpty()
   start_time: Date;
-  @IsDate()
-  @IsOptional()
+  @IsDateString()
+  @IsNotEmpty()
   end_time: Date;
   @IsBoolean()
   @IsOptional()
