@@ -1,40 +1,45 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  IsOptional,
+  IsPostalCode,
+} from 'class-validator';
 
 export class CreateUserDto {
-@IsString()
-@IsNotEmpty()
-public username: string;
+  @IsString()
+  @IsNotEmpty()
+  username: string;
 
-@IsEmail()
-public mail: string;
+  @IsEmail()
+  @IsNotEmpty()
+  mail: string;
 
-@IsString()
-@IsNotEmpty()
-public password:  string
+  @IsString()
+  @IsNotEmpty()
+  password: string;
+  @IsString()
+  @IsNotEmpty()
+  passwordConfirm: string;
 
-@IsString()
-@IsNotEmpty()
-public adress_line1: string;
+  @IsString()
+  @IsNotEmpty()
+  adress_line1: string;
 
-@IsString()
-@IsNotEmpty()
-public adress_line2: string;
+  @IsString()
+  @IsOptional()
+  adress_line2: string;
 
-@IsString()
-@IsNotEmpty()
-public adress_line3: string;
+  @IsString()
+  @IsOptional()
+  adress_line3: string;
 
-@IsString()
-@IsNotEmpty()
-public zipCode: string;
+  @IsString()
+  @IsNotEmpty()
+  @IsPostalCode('FR')
+  zipCode: string;
 
-@IsString()
-@IsNotEmpty()
-public city: string;
-
-
-
-
-
+  @IsString()
+  @IsNotEmpty()
+  city: string;
 }
-

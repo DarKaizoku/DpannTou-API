@@ -5,9 +5,9 @@ export class CreateReservationDto {
   @IsOptional()
   id: number;
 
-  @IsInt()
+  /* @IsInt()
   @IsNotEmpty()
-  user_id: number;
+  user_id: number; */
   @IsInt()
   @IsNotEmpty()
   service_id: number;
